@@ -4,6 +4,7 @@
     <title>{% block title %} {% endblock %}</title>
 
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <noscript>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/5grid/core.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/5grid/core-desktop.css') }}">
@@ -14,6 +15,9 @@
     </noscript>
     <script src="{{ url_for('static', filename='css/5grid/jquery.js') }}"></script>
     <script src="{{ url_for('static', filename='css/5grid/init.js') }}?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <script defer src="{{ url_for('static', filename='bootstrap/js/bootstrap.js') }}"></script>
+
 </head>
 
 {% block body %} {% endblock %}
