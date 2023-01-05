@@ -1,11 +1,10 @@
-from flask import Flask, render_template
+from flask import render_template
 
-app = Flask(__name__)
+from config import app
 
 
 @app.route('/')
 def index():
-
     return render_template("index.html")
 
 
@@ -27,7 +26,3 @@ def about():
 @app.route('/admin/')
 def admin():
     return render_template("admin.html")
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
