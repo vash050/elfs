@@ -5,8 +5,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    title = 'elfs'
-    return render_template("index.html", content={'title': title})
+
+    return render_template("index.html")
 
 
 @app.route('/list-elfs/')
