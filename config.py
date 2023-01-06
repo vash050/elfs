@@ -1,7 +1,8 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+
+DATABASE = 'instance/elfs.db'
+DEBUG = True
+SECRET_KEY = 'kdsfhciewjcabshj<?kjJbh**kjk,nc'
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///elfs.db'
-db = SQLAlchemy(app)

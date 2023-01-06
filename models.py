@@ -1,31 +1,33 @@
 from datetime import datetime
 
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, String, DateTime, Boolean, ForeignKey, Text
-from sqlalchemy.orm import declarative_base
 
-from config import db
+from config import app
 
-Base = declarative_base()
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///elfs.db'
+db = SQLAlchemy(app)
 
 
-class User(Base):
+# TODO нет таблицы в базе
+class User_site(db.Model):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String(120), nulladle=False)
-    login = Column(String(120), nulladle=False, unique=True)
-    password = Column(String(30), nulladle=False)
-    email = Column(String(120), nulladle=False, unique=True)
-    date_create = Column(DateTime, default=datetime.utcnow)
-    date_update = Column(DateTime, default=datetime.utcnow)
+    name = Column(String(120), nullable=False)
+    login = Column(String(120), nullable=False)
+    password = Column(String(30), nullable=False)
+    email = Column(String(120), nullable=False)
+    date_create = Column(DateTime, default=datetime.now)
+    date_update = Column(DateTime, default=datetime.now)
     is_active = Column(Boolean, default=True)
 
 
 class CategoryElf(db.Model):
     __tablename__ = 'category_elfs'
 
-    id = Column(Integer, primary_key=True, nulladle=False)
-    name = Column(String(120), nulladle=False)
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(String(120), nullable=False)
     is_active = Column(Boolean, default=True)
     date_create = Column(DateTime, default=datetime.utcnow)
 
@@ -33,16 +35,16 @@ class CategoryElf(db.Model):
 class Elf(db.Model):
     __tablename__ = 'elfs'
 
-    id = Column(Integer, primary_key=True, nulladle=False)
-    name = Column(String(120), nulladle=False)
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(String(120), nullable=False)
     patronymic = Column(String(120))
-    last_name = Column(String(120), nulladle=False)
+    last_name = Column(String(120), nullable=False)
     nickname = Column(String(120))
-    photo = Column(String(120), nulladle=False)
+    photo = Column(String(120))
     category_elf = Column(ForeignKey(CategoryElf.id))
-    quote = Column(Text, nulladle=False)
-    date_quote = Column(DateTime)
-    date_create = Column(DateTime, default=datetime.utcnow)
-    date_update = Column(DateTime, default=datetime.utcnow)
+    quote = Column(Text, nullable=False)
+    date_quote = Column(String(120))
+    date_create = Column(DateTime, default=datetime.now)
+    date_update = Column(DateTime, default=datetime.now)
     is_active = Column(Boolean, default=True)
-    moderator = Column(ForeignKey(User.id))
+    moderator = Column(ForeignKey(User_site.id))
