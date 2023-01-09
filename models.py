@@ -3,9 +3,9 @@ from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, String, DateTime, Boolean, ForeignKey, Text
 
-from config import app
+from config import app, DATABASE
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///elfs.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE
 db = SQLAlchemy(app)
 
 

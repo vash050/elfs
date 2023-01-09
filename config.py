@@ -1,6 +1,6 @@
 from flask import Flask
 
-DATABASE = 'instance/elfs.db'
+DATABASE = 'sqlite:///elfs.db'
 DEBUG = True
 SECRET_KEY = 'kdsfhciewjcabshj<?kjJbh**kjk,nc'
 

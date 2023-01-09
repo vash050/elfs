@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect
 
-from config import app, db
-from models import Elf
+from config import app
+from models import Elf, db
 
 
 @app.route('/')
