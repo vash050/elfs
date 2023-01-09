@@ -21,6 +21,8 @@ class UserSite(db.Model):
     date_create = Column(DateTime, default=datetime.now)
     date_update = Column(DateTime, default=datetime.now)
     is_active = Column(Boolean, default=True)
+    super_user = Column(Boolean, default=False)
+    moderator = Column(Boolean, default=False)
 
 
 class CategoryElf(db.Model):
