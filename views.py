@@ -1,4 +1,7 @@
+from distutils.util import strtobool
+
 from flask import render_template, request, redirect
+from werkzeug.security import generate_password_hash
 
 from config import app
 from models import Elf, db, UserSite, CategoryElf
@@ -17,32 +20,34 @@ def get_list_elfs():
 @app.route('/add-elf/', methods=['POST', 'GET'])
 def add_elf():
     if request.method == 'POST':
-        name = request.form['name']
-        patronymic = request.form['patronymic']
-        last_name = request.form['last_name']
-        nickname = request.form['nickname']
-        quote = request.form['quote']
-        date_quote = request.form['date_quote']
-        print(name, patronymic, last_name, nickname, quote)
-
-        elf = Elf(
-            name=name,
-            patronymic=patronymic,
-            last_name=last_name,
-            nickname=nickname,
-            quote=quote,
-            date_quote=date_quote
-        )
         try:
+            name = request.form['name']
+            patronymic = request.form['patronymic']
+            last_name = request.form['last_name']
+            nickname = request.form['nickname']
+            quote = request.form['quote']
+            date_quote = request.form['date_quote']
+            print(name, patronymic, last_name, nickname, quote)
+
+            elf = Elf(
+                name=name,
+                patronymic=patronymic,
+                last_name=last_name,
+                nickname=nickname,
+                quote=quote,
+                date_quote=date_quote
+            )
+
             db.session.add(elf)
             db.session.commit()
             return redirect('/')
         except Exception as e:
             print(e)
             return 'error'
+
     else:
         print('get')
-    return render_template("add_elf.html")
+        return render_template("add_elf.html")
 
 
 @app.route('/about/')
@@ -60,11 +65,11 @@ def add_user():
     if request.method == 'POST':
         name = request.form['name']
         login = request.form['login']
-        password = request.form['password']
+        password = generate_password_hash(request.form['password'])
         email = request.form['email']
-        is_active = request.form.get('is-active')
-        superuser = request.form.get('superuser')
-        moderator = request.form.get('moderator')
+        is_active = bool(request.form.get('is-active'))
+        superuser = bool(request.form.get('superuser'))
+        moderator = bool(request.form.get('moderator'))
 
         user = UserSite(
             name=name,
