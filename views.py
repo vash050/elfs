@@ -85,8 +85,9 @@ def add_user():
             db.session.commit()
             return redirect('/admin/')
         except Exception as e:
+            db.session.rollback()
             print(e)
-            return 'error'
+            return redirect('/admin/')
     return render_template("admin.html")
 
 
@@ -103,6 +104,7 @@ def add_category_elf():
             db.session.commit()
             return redirect('/admin/')
         except Exception as e:
+            db.session.rollback()
             print(e)
-            return 'error'
+            return redirect('/admin/')
     return render_template("admin.html")
