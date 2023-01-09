@@ -10,10 +10,10 @@ db = SQLAlchemy(app)
 
 
 # TODO нет таблицы в базе
-class User_site(db.Model):
+class UserSite(db.Model):
     __tablename__ = 'users'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(120), nullable=False)
     login = Column(String(120), nullable=False)
     password = Column(String(30), nullable=False)
@@ -29,7 +29,7 @@ class CategoryElf(db.Model):
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(120), nullable=False)
     is_active = Column(Boolean, default=True)
-    date_create = Column(DateTime, default=datetime.utcnow)
+    date_create = Column(DateTime, default=datetime.now)
 
 
 class Elf(db.Model):
@@ -47,4 +47,4 @@ class Elf(db.Model):
     date_create = Column(DateTime, default=datetime.now)
     date_update = Column(DateTime, default=datetime.now)
     is_active = Column(Boolean, default=True)
-    moderator = Column(ForeignKey(User_site.id))
+    moderator = Column(ForeignKey(UserSite.id))
