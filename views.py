@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect
 
 from config import app
-from models import Elf, db, UserSite
+from models import Elf, db, UserSite, CategoryElf
 
 
 @app.route('/')
@@ -77,6 +77,24 @@ def add_user():
         )
         try:
             db.session.add(user)
+            db.session.commit()
+            return redirect('/admin/')
+        except Exception as e:
+            print(e)
+            return 'error'
+    return render_template("admin.html")
+
+
+@app.route('/add-category-elf/', methods=['POST'])
+def add_category_elf():
+    if request.method == 'POST':
+        name = request.form['name-elf-type']
+
+        category_elf = CategoryElf(
+            name=name,
+        )
+        try:
+            db.session.add(category_elf)
             db.session.commit()
             return redirect('/admin/')
         except Exception as e:
