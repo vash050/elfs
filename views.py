@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect
 
 from config import app
-from models import Elf, db
+from models import Elf, db, UserSite
 
 
 @app.route('/')
@@ -52,4 +52,34 @@ def about():
 
 @app.route('/admin/')
 def admin():
+    return render_template("admin.html")
+
+
+@app.route('/add-user/', methods=['POST'])
+def add_user():
+    if request.method == 'POST':
+        name = request.form['name']
+        login = request.form['login']
+        password = request.form['password']
+        email = request.form['email']
+        is_active = request.form.get('is-active')
+        superuser = request.form.get('superuser')
+        moderator = request.form.get('moderator')
+
+        user = UserSite(
+            name=name,
+            login=login,
+            password=password,
+            email=email,
+            is_active=is_active,
+            super_user=superuser,
+            moderator=moderator
+        )
+        try:
+            db.session.add(user)
+            db.session.commit()
+            return redirect('/admin/')
+        except Exception as e:
+            print(e)
+            return 'error'
     return render_template("admin.html")

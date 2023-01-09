@@ -26,14 +26,14 @@
             <div id="page">
                 <div class="row">
                     <div class="12u">
-                        <section id="content">
+                        <div id="content">
                             <h2>Администрирование сайта</h2>
                             <p class="subtitle">будьте внимательны и проверяйте информацию</p>
 
-                            <p>
+
                             <div class="container mt-5">
                                 <h2>Добавить модератора</h2>
-                                <form method="post">
+                                <form method="post" action="/add-user/">
                                     <p>имя</p>
                                     <input type="text" name="name" id="name" class="form-control"><br>
                                     <p>login</p>
@@ -42,88 +42,100 @@
                                     <input type="password" name="password" id="password" class="form-control"><br>
                                     <p>email</p>
                                     <input type="email" name="email" id="email" class="form-control"><br>
-                                    <p>email</p>
-                                    <input type="email" name="email" id="email" class="form-control"><br>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
+                                        <input class="form-check-input" type="checkbox" name="is-active" value=""
+                                               id="is-active"
+                                               checked>
+                                        <label class="form-check-label" for="is-active">
+                                            активный
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="superuser" value=""
+                                               id="superuser">
+                                        <label class="form-check-label" for="superuser">
                                             админ
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="moderator"
+                                        <input class="form-check-input" type="checkbox" name="moderator" value=""
+                                               id="moderator"
                                                checked>
                                         <label class="form-check-label" for="moderator">
                                             модератор
                                         </label>
-                                    </div><br>
+                                    </div>
+                                    <br>
                                     <button type="submit" class="btn btn-success">отправить</button>
 
                                 </form>
                             </div>
-                            </p>
+
                             <p>&nbsp;</p>
-                            <p>Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget, tempus et, tellus.
-                                Etiam neque. Vivamus consequat lorem at nisl. Nullam non wisi a sem semper eleifend.
-                                Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit
-                                nulla suscipit interdum. Aenean lectus lorem, imperdiet at, ultrices eget, ornare et,
-                                wisi. Pellentesque adipiscing purus ac magna. Pellentesque habitant morbi tristique
-                                senectus et netus et malesuada fames ac turpis egestas. Pellentesque pede. Donec
-                                pulvinar ullamcorper metus. In eu odio at lectus pulvinar mollis. Vestibulum sem magna,
-                                elementum ut, vestibulum eu, facilisis quis, arcu. Mauris a dolor. Nulla facilisi. Cum
-                                sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed
-                                blandit. Phasellus pellentesque, ante nec iaculis dapibus, eros justo auctor lectus, a
-                                lobortis lorem mauris quis nunc. Praesent pellentesque facilisis elit. Class aptent
-                                taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. In hac
-                                habitasse platea dictumst. Nullam id ante eget dui vulputate aliquam. Pellentesque erat
-                                erat, tincidunt in, eleifend accumsan, malesuada eget, augue. Suspendisse sit amet
-                                tellus in eros bibendum condimentum. Vestibulum suscipit volutpat nulla.<br>
-                            </p>
-                        </section>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="12u">
-                    <div class="row">
-                        <div id="splash"><span>In posuere eleifend</span> odio quisque semper augue maecenas ligula
-                            congue rutrum. Pellentesque vulputaterisus semper.
+                            <hr>
+
+                            <div class="container mt-5">
+                                <h2>добавить категорию эльфов</h2>
+                                <form method="post">
+                                    <p>название категории</p>
+                                    <input type="text" name="name-elf-type" id="name-elf-type" class="form-control"><br>
+
+                                    <button type="submit" class="btn btn-success">отправить</button>
+
+                                </form>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="12u" id="gallery">
-                    <div class="row">
-                        <div class="4u">
-                            <section>
-                                <div>
-                                    <div class="image-style1"><a href="#"><img src="../static/images/pics03.jpg" alt=""></a>
-                                    </div>
-                                    <div><a href="#"><img src="../static/css/images/img02.png" width="262" height="30"
-                                                          alt=""></a></div>
-                                </div>
-                            </section>
+                <div class="row">
+                    <div class="12u">
+                        <div class="row">
+                            <div id="splash"><span>In posuere eleifend</span> odio quisque semper augue maecenas ligula
+                                congue rutrum. Pellentesque vulputaterisus semper.
+                            </div>
                         </div>
-                        <div class="4u">
-                            <section>
-                                <div>
-                                    <div class="image-style1"><a href="#"><img src="../static/images/pics04.jpg" alt=""></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="12u" id="gallery">
+                        <div class="row">
+                            <div class="4u">
+                                <section>
+                                    <div>
+                                        <div class="image-style1"><a href="#"><img src="../static/images/pics03.jpg"
+                                                                                   alt=""></a>
+                                        </div>
+                                        <div><a href="#"><img src="../static/css/images/img02.png" width="262"
+                                                              height="30"
+                                                              alt=""></a></div>
                                     </div>
-                                    <div><a href="#"><img src="../static/css/images/img02.png" width="262" height="30"
-                                                          alt=""></a></div>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="4u">
-                            <section>
-                                <div>
-                                    <div class="image-style1"><a href="#"><img src="../static/images/pics05.jpg" alt=""></a>
+                                </section>
+                            </div>
+                            <div class="4u">
+                                <section>
+                                    <div>
+                                        <div class="image-style1"><a href="#"><img src="../static/images/pics04.jpg"
+                                                                                   alt=""></a>
+                                        </div>
+                                        <div><a href="#"><img src="../static/css/images/img02.png" width="262"
+                                                              height="30"
+                                                              alt=""></a></div>
                                     </div>
-                                    <div><a href="#"><img src="../static/css/images/img02.png" width="262" height="30"
-                                                          alt=""></a></div>
-                                </div>
-                            </section>
+                                </section>
+                            </div>
+                            <div class="4u">
+                                <section>
+                                    <div>
+                                        <div class="image-style1"><a href="#"><img src="../static/images/pics05.jpg"
+                                                                                   alt=""></a>
+                                        </div>
+                                        <div><a href="#"><img src="../static/css/images/img02.png" width="262"
+                                                              height="30"
+                                                              alt=""></a></div>
+                                    </div>
+                                </section>
+                            </div>
                         </div>
                     </div>
                 </div>

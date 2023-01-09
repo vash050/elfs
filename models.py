@@ -9,7 +9,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE
 db = SQLAlchemy(app)
 
 
-# TODO нет таблицы в базе
 class UserSite(db.Model):
     __tablename__ = 'users'
 
