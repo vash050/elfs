@@ -32,6 +32,9 @@ class CategoryElf(db.Model):
     is_active = Column(Boolean, default=True)
     date_create = Column(DateTime, default=datetime.now)
 
+    def __repr__(self):
+        return self.name
+
 
 class Elf(db.Model):
     __tablename__ = 'elfs'

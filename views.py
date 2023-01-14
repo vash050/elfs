@@ -21,19 +21,22 @@ def get_list_elfs():
 def add_elf():
     if request.method == 'POST':
         try:
+            print(request.form)
             name = request.form['name']
             patronymic = request.form['patronymic']
             last_name = request.form['last_name']
             nickname = request.form['nickname']
             quote = request.form['quote']
             date_quote = request.form['date_quote']
-            print(name, patronymic, last_name, nickname, quote)
+            category_elf = request.form['category_elf']
+            print(category_elf)
 
             elf = Elf(
                 name=name,
                 patronymic=patronymic,
                 last_name=last_name,
                 nickname=nickname,
+                category_elf=category_elf,
                 quote=quote,
                 date_quote=date_quote
             )
@@ -46,8 +49,9 @@ def add_elf():
             return 'error'
 
     else:
-        print('get')
-        return render_template("add_elf.html")
+        context = {'category_elfs': CategoryElf.query.all()}
+
+        return render_template("add_elf.html", context=context)
 
 
 @app.route('/about/')

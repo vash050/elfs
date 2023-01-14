@@ -13,7 +13,7 @@
                 <div class="12u">
                     <!-- Logo -->
                     <h1><a href="#" class="mobileUI-site-name">Half-Elvens</a></h1>
-{#                    <p>список эльфов</p>#}
+                    {#                    <p>список эльфов</p>#}
                     <!-- Nav -->
                     <nav class="mobileUI-site-nav"><a href="/">главная</a> <a
                             href="/list-elfs/">список</a> <a href="/add-elf/" class="active">добавить эльфа</a> <a
@@ -68,9 +68,14 @@
                                             <input type="text" name="nickname" id="nickname" class="form-control"><br>
                                             <p>фото</p>
                                             <input type="image" name="photo" id="photo" class="form-control"><br>
-                                            <p>категория</p>
-                                            <input type="text" name="category_elf" id="category_elf"
-                                                   class="form-control"><br>
+                                            <p>Категория эльфов</p>
+                                            <select class="form-select" aria-label="Default select example"
+                                                    name="category_elf">
+                                                {% for category in  context.category_elfs %}
+                                                    <option value="{{ category }}" selected>{{ category }}</option>
+                                                   <option value="3">Three</option>#}
+                                                {% endfor %}
+                                            </select><br>
                                             <p>цитата</p>
                                             <textarea name="quote" id="quote" class="form-control"></textarea><br>
                                             <p>дата цитаты </p>
