@@ -9,7 +9,11 @@ from models import Elf, db, UserSite, CategoryElf
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    context = {
+        'category_elfs': CategoryElf.query.limit(3).all(),
+        'elfs': Elf.query.limit(4).all()
+    }
+    return render_template("index.html", context=context)
 
 
 @app.route('/list-elfs/')

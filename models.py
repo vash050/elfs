@@ -52,3 +52,6 @@ class Elf(db.Model):
     date_update = Column(DateTime, default=datetime.now)
     is_active = Column(Boolean, default=True)
     moderator = Column(ForeignKey(UserSite.id))
+
+    def __repr__(self):
+        return self.last_name
