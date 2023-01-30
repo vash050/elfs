@@ -12,7 +12,7 @@
                 <div class="12u">
                     <!-- Logo -->
                     <h1><a href="#" class="mobileUI-site-name">Half-Elvens</a></h1>
-{#                    <p>список эльфов</p>#}
+                    {#                    <p>список эльфов</p>#}
                     <!-- Nav -->
                     <nav class="mobileUI-site-nav"><a href="/">главная</a> <a
                             href="/list-elfs/">список</a> <a href="/add-elf/">добавить эльфа</a> <a
@@ -76,9 +76,11 @@
 
                             <div class="container mt-5">
                                 <h2>добавить категорию эльфов</h2>
-                                <form method="post" action="/add-category-elf/">
+                                <form method="post" action="/add-category-elf/" enctype=multipart/form-data>
                                     <p>название категории</p>
                                     <input type="text" name="name-elf-type" id="name-elf-type" class="form-control"><br>
+                                    <p>фото</p>
+                                    <input type="file" name="file" id="photo" class="form-control"><br>
 
                                     <button type="submit" class="btn btn-success">отправить</button>
 

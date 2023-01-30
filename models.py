@@ -29,6 +29,7 @@ class CategoryElf(db.Model):
 
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(120), nullable=False)
+    img = Column(String(120))
     is_active = Column(Boolean, default=True)
     date_create = Column(DateTime, default=datetime.now)
 

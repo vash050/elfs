@@ -1,10 +1,18 @@
+import os
 from distutils.util import strtobool
 
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 from werkzeug.security import generate_password_hash
+from werkzeug.utils import secure_filename
 
-from config import app
+from config import app, ALLOWED_EXTENSIONS
 from models import Elf, db, UserSite, CategoryElf
+
+
+def allowed_file(filename):
+    """ Функция проверки расширения файла """
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route('/')
@@ -116,9 +124,31 @@ def add_user():
 def add_category_elf():
     if request.method == 'POST':
         name = request.form['name-elf-type']
+        # проверим, передается ли в запросе файл
+        if 'file' not in request.files:
+            # После перенаправления на страницу загрузки
+            # покажем сообщение пользователю
+            flash('Не могу прочитать файл')
+            return redirect(request.url)
+        file = request.files['file']
+        # Если файл не выбран, то браузер может
+        # отправить пустой файл без имени.
+        if file.filename == '':
+            flash('Нет выбранного файла')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            # безопасно извлекаем оригинальное имя файла
+            filename = secure_filename(file.filename)
+
+            # сохраняем файл
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            # если все прошло успешно, то перенаправляем
+            # на функцию-представление `download_file`
+            # для скачивания файла
 
         category_elf = CategoryElf(
             name=name,
+            img=filename
         )
         try:
             db.session.add(category_elf)
