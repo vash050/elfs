@@ -1,6 +1,6 @@
 from distutils.util import strtobool
 
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, url_for
 from werkzeug.security import generate_password_hash
 
 from config import app
@@ -21,6 +21,15 @@ def get_list_elfs():
     context = {
         'category_elfs': CategoryElf.query.limit(3).all(),
         'elfs': Elf.query.limit(3).all()
+    }
+    return render_template("list_elfs.html", context=context)
+
+
+@app.route('/list-elfs/<string:category_name>')
+def get_list_elfs_with_category(category_name):
+    context = {
+        'category_elfs': CategoryElf.query.limit(3).all(),
+        'elfs': Elf.query.filter_by(category_elf=category_name).limit(3).all()
     }
     return render_template("list_elfs.html", context=context)
 
