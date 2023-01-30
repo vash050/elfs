@@ -129,3 +129,12 @@ def add_category_elf():
             print(e)
             return redirect('/admin/')
     return render_template("admin.html")
+
+
+@app.route('/elf/<int:elf_id>')
+def get_elf(elf_id):
+    context = {
+        'category_elfs': CategoryElf.query.limit(3).all(),
+        'elf': Elf.query.filter_by(id=elf_id).one()
+    }
+    return render_template("elf.html", context=context)
