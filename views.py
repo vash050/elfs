@@ -18,7 +18,11 @@ def index():
 
 @app.route('/list-elfs/')
 def get_list_elfs():
-    return render_template("list_elfs.html")
+    context = {
+        'category_elfs': CategoryElf.query.limit(3).all(),
+        'elfs': Elf.query.limit(3).all()
+    }
+    return render_template("list_elfs.html", context=context)
 
 
 @app.route('/add-elf/', methods=['POST', 'GET'])

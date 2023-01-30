@@ -35,36 +35,21 @@
                 <div class="row">
                     <div class="12u" id="gallery">
                         <div class="row">
-                            <div class="4u">
-                                <section>
-                                    <div>
-                                        <div class="image-style1"><a href="#"><img src="../static/images/pics03.jpg"
-                                                                                   alt=""></a></div>
-                                        <div><a href="#"><img src="../static/css/images/img02.png" width="262"
-                                                              height="30" alt=""></a></div>
-                                    </div>
-                                </section>
-                            </div>
-                            <div class="4u">
-                                <section>
-                                    <div>
-                                        <div class="image-style1"><a href="#"><img src="../static/images/pics04.jpg"
-                                                                                   alt=""></a></div>
-                                        <div><a href="#"><img src="../static/css/images/img02.png" width="262"
-                                                              height="30" alt=""></a></div>
-                                    </div>
-                                </section>
-                            </div>
-                            <div class="4u">
-                                <section>
-                                    <div>
-                                        <div class="image-style1"><a href="#"><img src="../static/images/pics05.jpg"
-                                                                                   alt=""></a></div>
-                                        <div><a href="#"><img src="../static/css/images/img02.png" width="262"
-                                                              height="30" alt=""></a></div>
-                                    </div>
-                                </section>
-                            </div>
+                            {% for el in context.category_elfs %}
+                                <div class="4u">
+                                    <section>
+                                        <div>
+                                            <div class="image-style1"><a href="#">
+                                                <img src="../static/images/pics03.jpg" alt="">
+                                                <h3>{{ el.name }}</h3>
+                                            </a></div>
+                                            <div><a href="#"><img src="../static/css/images/img02.png" width="262"
+                                                                  height="30" alt=""></a></div>
+                                        </div>
+                                    </section>
+                                </div>
+
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -79,42 +64,29 @@
                     </div>
                 </div>
 
+
                 <div class="row">
                     <div class="12u" id="gallery">
                         <div class="row">
-                            <div class="4u">
-                                <section>
-                                    <div>
-                                        <div class="image-style1"><a href="#"><img src="../static/images/pics03.jpg"
-                                                                                   alt=""></a></div>
-                                        <div><a href="#"><img src="../static/css/images/img02.png" width="262"
-                                                              height="30" alt=""></a></div>
-                                    </div>
-                                </section>
-                            </div>
-                            <div class="4u">
-                                <section>
-                                    <div>
-                                        <div class="image-style1"><a href="#"><img src="../static/images/pics04.jpg"
-                                                                                   alt=""></a></div>
-                                        <div><a href="#"><img src="../static/css/images/img02.png" width="262"
-                                                              height="30" alt=""></a></div>
-                                    </div>
-                                </section>
-                            </div>
-                            <div class="4u">
-                                <section>
-                                    <div>
-                                        <div class="image-style1"><a href="#"><img src="../static/images/pics05.jpg"
-                                                                                   alt=""></a></div>
-                                        <div><a href="#"><img src="../static/css/images/img02.png" width="262"
-                                                              height="30" alt=""></a></div>
-                                    </div>
-                                </section>
-                            </div>
+                            {% for el in context.elfs %}
+                                <div class="4u">
+                                    <section>
+                                        <div>
+                                            <div class="image-style1"><a href="#"><img src="../static/images/pics03.jpg"
+                                                                                       alt=""></a></div>
+                                            <div><a href="#"><img src="../static/css/images/img02.png" width="262"
+                                                                  height="30" alt=""></a></div>
+
+                                            <h3>{{ el.name }} {{ el.last_name }}</h3>
+                                        </div>
+                                    </section>
+                                </div>
+                            {% endfor %}
+
                         </div>
                     </div>
                 </div>
+
 
             </div>
         </div>
